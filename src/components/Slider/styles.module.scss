@@ -2,6 +2,11 @@
 @import '/src/styles/abstracts/variables';
 
 
+.bigContainer {
+    display: flex;
+    flex-direction: column;
+}
+
 .sliderContainer {
     position: relative;
     display: flex;
@@ -17,5 +22,14 @@
 
 .slideMotion {
     position: absolute;
-    z-index: -99;
+    z-index: 1;
+    scale: 0.2;
+}
+
+.buttonContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 4rem;
+    align-items: center;
+    justify-content: center;
 }
