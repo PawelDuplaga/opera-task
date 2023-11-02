@@ -1,0 +1,21 @@
+@import '/src/styles/abstracts/mixins';
+@import '/src/styles/abstracts/variables';
+
+
+.sliderContainer {
+    position: relative;
+    display: flex;
+    width: 500px;
+    height: 500px;
+    background-color: $gray-one;
+    overflow: hidden;
+
+    justify-content: center;
+    align-items: center;
+
+}
+
+.slideMotion {
+    position: absolute;
+    z-index: -99;
+}

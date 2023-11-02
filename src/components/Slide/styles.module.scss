@@ -1,0 +1,10 @@
+@import '/src/styles/abstracts/mixins';
+@import '/src/styles/abstracts/variables';
+
+
+.slideContainer {
+
+    height: 400px;
+    width: 300px;
+    background-color: $light-grey-background;
+}
