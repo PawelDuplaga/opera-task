@@ -2,34 +2,29 @@
 
 import { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
+import { slidesVariants } from '@/lib/const/sliderConst';
+import { getSlideClass } from '@/utils/sliderUtils';
 import styles from './styles.module.scss';
 import Slide from '../Slide';
 
-type slidesState = "left" | "front" | "right"
-
-const variants = {
-  left: { opacity: 0.2, scale: 0.8, zIndex: 2 },
-  front : {opacity: 1, scale: 1, x: 0, zIndex: 3 },
-  right : {opacity: 1, scale: 1, x: 400, zIndex: 4 }
-}
 
 const Slider = () => {
 
   const slides = [1,2,3,4,5,6,7,8,9,10];
-  const [frontSlideIndex, setFrontSlideIndex] = useState(1);
+  const [frontSlideIndex, setFrontSlideIndex] = useState(3);
 
   const mappedSlides = useMemo(() => {
-    return slides.map((data, key) => {
-      const state: slidesState = key < frontSlideIndex ? 
-                                "left" : key === frontSlideIndex ? "front" : "right";
+    return slides.map((data, slideIndex) => {
+
       return (
       <motion.div 
-        key={key} 
+        key={slideIndex} 
         className={styles.slideMotion} 
         transition={{ type: "spring", typstiffness: "100", bounce: 0.1 }}
-        onAnimationComplete={() => key === frontSlideIndex ? console.log("Play", key) : null}
-        animate={state}
-        variants={variants}
+        onAnimationComplete={() => slideIndex === frontSlideIndex ? console.log("Play", slideIndex) : null}
+        animate={getSlideClass(frontSlideIndex, slideIndex)}
+        initial={getSlideClass(frontSlideIndex, slideIndex)}
+        variants={slidesVariants}
         >
         <Slide />
       </motion.div>
@@ -42,8 +37,6 @@ const Slider = () => {
   const toggleLeft = () => {
     setFrontSlideIndex((current) => current > 0 ?  current - 1 : 0)
   }
-
-
 
   return (
 		<div className={styles.bigContainer}>

@@ -1,0 +1,1 @@
+export type slideState = "left" | "front" | "right";
