@@ -3,6 +3,8 @@
 import React, { useEffect, useState, createContext } from 'react'
 
 type ThemeContextProviderProps = {
+    currentSlideSSR: number,
+    
     children: React.ReactNode;
 }
 
@@ -14,3 +16,11 @@ type SlideContextType = {
 
 
 export const SlideContext = createContext<SlideContextType | null>(null)
+
+const SlideContextProvider = ({ currentSlideSSR, children } : ThemeContextProviderProps) => {
+    const [currentSlide, setCurrentSlide] = useState(currentSlideSSR);
+
+    const previousSlide = () => 
+
+
+}

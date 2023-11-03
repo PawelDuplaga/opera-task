@@ -34,7 +34,7 @@ const AudioPlayer = ({ slides } : AudioPlayerProps) => {
     if (audioArray !== undefined && userInteracted) {
       audioArray[currePlayingIndex].play();
     }
-  },[audioArray,currePlayingIndex,userInteracted])
+  },[audioArray,currePlayingIndex])
 
   
 
