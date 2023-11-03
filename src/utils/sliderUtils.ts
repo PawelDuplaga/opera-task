@@ -1,6 +1,6 @@
-import { slideState } from "@/lib/types/slidesState"
+import { SlideState } from "@/lib/types/SlidesState"
 
-export const getSlideClass = (frontSlideIndex: number, currentSlideIndex: number) : slideState => {
+export const getSlideClass = (frontSlideIndex: number, currentSlideIndex: number) : SlideState => {
     if (currentSlideIndex < frontSlideIndex) return "left"
     if (currentSlideIndex > frontSlideIndex) return "right"
     return "front"

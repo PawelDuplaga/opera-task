@@ -1,1 +1,1 @@
-export type slideState = "left" | "front" | "right";
+export type SlideState = "left" | "front" | "right";

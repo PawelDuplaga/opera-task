@@ -17,17 +17,17 @@ const Slider = () => {
     return slides.map((data, slideIndex) => {
 
       return (
-      <motion.div 
-        key={slideIndex} 
-        className={styles.slideMotion} 
-        transition={{ type: "spring", typstiffness: "100", bounce: 0.1 }}
-        onAnimationComplete={() => slideIndex === frontSlideIndex ? console.log("Play", slideIndex) : null}
-        animate={getSlideClass(frontSlideIndex, slideIndex)}
-        initial={getSlideClass(frontSlideIndex, slideIndex)}
-        variants={slidesVariants}
-        >
-        <Slide />
-      </motion.div>
+        <motion.div 
+          key={slideIndex} 
+          className={styles.slideMotion} 
+          transition={{ type: "spring", typstiffness: "100", bounce: 0.1 }}
+          onAnimationComplete={() => slideIndex === frontSlideIndex ? console.log("Play", slideIndex) : null}
+          animate={getSlideClass(frontSlideIndex, slideIndex)}
+          initial={getSlideClass(frontSlideIndex, slideIndex)}
+          variants={slidesVariants}
+          >
+          <Slide />
+        </motion.div>
       )})},[slides, frontSlideIndex])
 
   const toggleRight = () => {
