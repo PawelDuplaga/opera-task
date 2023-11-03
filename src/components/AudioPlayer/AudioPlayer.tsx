@@ -6,14 +6,15 @@ import { TSlide } from '@/lib/types/Slide';
 import useUserInteraction from '@/utils/hooks/useUserInteraction';
 import useSlides from '@/utils/hooks/useSlides';
 import { preload } from 'react-dom';
+import ButtonPlay from '../ButtonPlay';
+import AudioControls from '../AudioControls';
 
 
 const AudioPlayer = () => {
   
   // const userInteracted = useUserInteraction();
-  const {frontSlideIndex, slides} = useSlides();
+  const {frontSlideIndex, slides, isAudioPlaying, setIsPlaying} = useSlides();
   const [audioArray, setAudioArray] = useState<HTMLAudioElement[] | undefined>();
-  const [isPlaying, setIsPlaying] = useState(false);
   const currentAudioRef = useRef<HTMLAudioElement | null>(null);
 
   //mapping urls to Audio() object to preload begging of the audio for smooth transitions
@@ -42,11 +43,19 @@ const AudioPlayer = () => {
     }
   }, [frontSlideIndex, audioArray]);
 
-  
+  useEffect(() => {
+    if(currentAudioRef.current !== null) {
+      if(isAudioPlaying === false && !currentAudioRef.current.paused) {
+        currentAudioRef.current.pause()
+      }
+      else currentAudioRef.current.play()
+    }
+  },[isAudioPlaying])
 
 
   return (
 		<div className={styles.audioplayerContainer}>
+      <AudioControls />
 		</div>
   );
 };

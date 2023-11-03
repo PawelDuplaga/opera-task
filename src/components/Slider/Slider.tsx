@@ -9,7 +9,7 @@ import Slide from '../SlideImage';
 import useSlides from '@/utils/hooks/useSlides';
 
 const Slider = () => {
-  const {frontSlideIndex, slides, nextSlide, previousSlide} = useSlides();
+  const {frontSlideIndex, slides} = useSlides();
   const mappedSlides = useMemo(() => {
     return slides?.map((slideData, slideIndex) => (
         <motion.div 
@@ -28,10 +28,6 @@ const Slider = () => {
 		<div className={styles.bigContainer}>
       <div className={styles.sliderContainer}>
         {mappedSlides}
-      </div>
-      <div className={styles.buttonContainer}>
-        <button onClick={nextSlide}>right</button>
-        <button onClick={previousSlide}>left</button>
       </div>
     </div>
   );

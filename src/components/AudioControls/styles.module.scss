@@ -2,10 +2,13 @@
 @import '/src/styles/abstracts/variables';
 
 
-.audioplayerContainer {
+.audiocontrolsContainer {
     display: flex;
-    width: 400px;
-    height: 220px;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
+    width: 100%;
+    height: 100%;
+
+
 }

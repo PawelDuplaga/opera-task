@@ -1,0 +1,25 @@
+@import '/src/styles/abstracts/mixins';
+@import '/src/styles/abstracts/variables';
+
+
+.buttonpreviousContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90px;
+    width: 90px;
+    background: rgba(29, 37, 58, 0.41);
+    border-radius: 124px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4.8px);
+    -webkit-backdrop-filter: blur(4.8px);
+    border: 1px solid rgba(29, 37, 58, 0.41);
+    cursor: pointer;
+}
+
+.previousIcon {
+    width: 30px;
+    height: 30px;
+    transform: translateX(-2px);
+    color: rgba(255, 255, 255, 0.8);
+}
