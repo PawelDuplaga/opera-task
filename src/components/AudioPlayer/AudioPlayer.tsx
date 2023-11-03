@@ -4,19 +4,16 @@ import { useEffect, useRef, useState } from 'react';
 import styles from './styles.module.scss';
 import { TSlide } from '@/lib/types/Slide';
 import useUserInteraction from '@/utils/hooks/useUserInteraction';
+import useSlides from '@/utils/hooks/useSlides';
 
-type AudioPlayerProps = {
-  slides: TSlide[]
+
+const AudioPlayer = () => {
   
-}
-
-const AudioPlayer = ({ slides } : AudioPlayerProps) => {
-
+  // const userInteracted = useUserInteraction();
+  const {frontSlideIndex, slides, nextSlide, previousSlide} = useSlides();
+  const [audioArray, setAudioArray] = useState<HTMLAudioElement[] | undefined>();
   const [isPlaying, setIsPlaying] = useState(false);
   const currentAudioRef = useRef<HTMLAudioElement | null>(null);
-  const [audioArray, setAudioArray] = useState<HTMLAudioElement[] | undefined>();
-  const userInteracted = useUserInteraction();
-  const currePlayingIndex = 1;
 
   useEffect(() => {
     const audioElements = slides.map((slideData) => new Audio(slideData.audio_url));
@@ -31,10 +28,12 @@ const AudioPlayer = ({ slides } : AudioPlayerProps) => {
   }, [slides]);
 
   useEffect(() => {
-    if (audioArray !== undefined && userInteracted) {
-      audioArray[currePlayingIndex].play();
+    if (audioArray) {
+      audioArray?.forEach(audioElement => audioElement.pause());
+      audioArray[frontSlideIndex].currentTime = 0;
+      audioArray[frontSlideIndex].play();
     }
-  },[audioArray,currePlayingIndex])
+  }, [frontSlideIndex, audioArray]);
 
   
 
