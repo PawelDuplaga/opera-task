@@ -23,7 +23,7 @@ type SlideContextType = {
 
 export const SlideContext = createContext<SlideContextType | null>(null)
 
-const SlideContextProvider = ({ frontSlideIndexQueryParams = 3, slides, children } : SlideContextProviderProps) => {
+const SlideContextProvider = ({ frontSlideIndexQueryParams = 6, slides, children } : SlideContextProviderProps) => {
     const [frontSlideIndex, setFrontSlideIndex] = useState(frontSlideIndexQueryParams);
     const [isAudioPlaying, setIsAudioPlaying] = useState(false);
 
