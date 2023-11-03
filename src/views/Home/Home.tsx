@@ -5,6 +5,7 @@ import { TSlide } from '@/lib/types/Slide';
 import { slidesFetch } from '@/api/slides-fetch';
 import SlideContextProvider from '@/context/slide-context';
 import { redirect } from 'next/navigation'
+import AudioInfo from '@/components/AudioInfo';
 
 
 const Home = async () => {
@@ -21,6 +22,7 @@ const Home = async () => {
     <SlideContextProvider slides={slides}>
       <div className={styles.homeContainer}>
         <Slider/>
+        <AudioInfo />
         <AudioPlayer/>
       </div>
     </SlideContextProvider >

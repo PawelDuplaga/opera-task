@@ -3,7 +3,7 @@
 import { TSlide } from '@/lib/types/Slide';
 import React, { useState, createContext } from 'react'
 
-type ThemeContextProviderProps = {
+type SlideContextProviderProps = {
     frontSlideIndexQueryParams?: number,
     slides: TSlide[]
     children: React.ReactNode;
@@ -12,9 +12,9 @@ type ThemeContextProviderProps = {
 type SlideContextType = {
     frontSlideIndex : number;
     isAudioPlaying : boolean;
+    slides: TSlide[]
     isNext : boolean;
     isPrevious: boolean;
-    slides: TSlide[]
     previousSlide: () => void;
     nextSlide: () => void;
     setIsPlaying: (isPlaying: boolean) => void;
@@ -23,25 +23,25 @@ type SlideContextType = {
 
 export const SlideContext = createContext<SlideContextType | null>(null)
 
-const SlideContextProvider = ({ frontSlideIndexQueryParams = 3, slides, children } : ThemeContextProviderProps) => {
+const SlideContextProvider = ({ frontSlideIndexQueryParams = 3, slides, children } : SlideContextProviderProps) => {
     const [frontSlideIndex, setFrontSlideIndex] = useState(frontSlideIndexQueryParams);
     const [isAudioPlaying, setIsAudioPlaying] = useState(false);
 
-    const isPrevious = frontSlideIndex < slides.length - 1
-    const isNext = frontSlideIndex > 0
+    const isPrevious = frontSlideIndex > 0
+    const isNext = frontSlideIndex < slides.length - 1
 
     const previousSlide = () => {
-        setFrontSlideIndex((current) => isPrevious ? current + 1 : current);
-        setIsPlaying(true);
+        setFrontSlideIndex((current) => isPrevious ? current -1 : 0)
+        setIsPlaying(true)
     }
 
     const nextSlide = () => {
-        setFrontSlideIndex((current) => isNext ? current - 1 : 0);
-        setIsPlaying(true);
+        setFrontSlideIndex((current) => isNext ? current + 1 : current)
+        setIsPlaying(true)
     }
 
     const setIsPlaying = (isPlaying : boolean) => {
-        setIsAudioPlaying(() => isPlaying)
+        setIsAudioPlaying((current) => isPlaying)
     }
 
     return (

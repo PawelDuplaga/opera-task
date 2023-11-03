@@ -2,19 +2,15 @@
 
 import { useEffect, useRef, useState } from 'react';
 import styles from './styles.module.scss';
-import useUserInteraction from '@/utils/hooks/useUserInteraction';
 import useSlides from '@/utils/hooks/useSlides';
 import AudioControls from '../AudioControls';
 
 
 const AudioPlayer = () => {
   
-  // const userInteracted = useUserInteraction();
   const {frontSlideIndex, slides, isAudioPlaying, setIsPlaying} = useSlides();
   const [audioArray, setAudioArray] = useState<HTMLAudioElement[] | undefined>();
   const currentAudioRef = useRef<HTMLAudioElement | null>(null);
-  const previousAudioRef = useRef<HTMLAudioElement | null>(null);
-
 
   const setAudioIsPaused = () => {
     setIsPlaying(false)
@@ -54,10 +50,10 @@ const AudioPlayer = () => {
   //toggle Audio pause based on isAudioPlaying
   useEffect(() => {
     if(currentAudioRef.current !== null) {
-      if(isAudioPlaying === false && !currentAudioRef.current.paused) {
+      if(!isAudioPlaying && !currentAudioRef.current.paused) {
         currentAudioRef.current.pause()
       }
-      if(isAudioPlaying === true && currentAudioRef.current.paused) {
+      if(isAudioPlaying && currentAudioRef.current.paused) {
         currentAudioRef.current.play()
       }
     }
