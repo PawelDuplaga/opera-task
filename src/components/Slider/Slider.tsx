@@ -8,18 +8,14 @@ import styles from './styles.module.scss';
 import Slide from '../SlideImage';
 import useSlides from '@/utils/hooks/useSlides';
 
-
 const Slider = () => {
-
   const {frontSlideIndex, slides, nextSlide, previousSlide} = useSlides();
-
   const mappedSlides = useMemo(() => {
     return slides?.map((slideData, slideIndex) => (
         <motion.div 
           key={slideIndex} 
           className={styles.slideMotion} 
           transition={{ type: "spring", typstiffness: "100", bounce: 0.1 }}
-          onAnimationComplete={() => slideIndex === frontSlideIndex ? console.log("Play", slideIndex) : null}
           animate={getSlideClass(frontSlideIndex, slideIndex)}
           initial={getSlideClass(frontSlideIndex, slideIndex)}
           variants={slidesVariants}
@@ -27,7 +23,6 @@ const Slider = () => {
           <Slide imageUrl={slideData.image_url} album={slideData.album}/>
         </motion.div>
       ))},[slides, frontSlideIndex])
-
 
   return (
 		<div className={styles.bigContainer}>
