@@ -14,7 +14,7 @@ const Home = async () => {
   return (
 		<div className={styles.homeContainer}>
       <Slider slides={slides}/>
-      <AudioPlayer />
+      <AudioPlayer slides={slides}/>
 		</div>
   );
 };
