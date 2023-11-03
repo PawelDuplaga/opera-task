@@ -4,7 +4,7 @@ import { TSlide } from '@/lib/types/Slide';
 import React, { useState, createContext } from 'react'
 
 type ThemeContextProviderProps = {
-    frontSlideIndexSSR: number,
+    frontSlideIndexQueryParams?: number,
     slides: TSlide[]
     children: React.ReactNode;
 }
@@ -19,8 +19,8 @@ type SlideContextType = {
 
 export const SlideContext = createContext<SlideContextType | null>(null)
 
-const SlideContextProvider = ({ frontSlideIndexSSR, slides, children } : ThemeContextProviderProps) => {
-    const [frontSlideIndex, setFrontSlideIndex] = useState(frontSlideIndexSSR);
+const SlideContextProvider = ({ frontSlideIndexQueryParams = 0, slides, children } : ThemeContextProviderProps) => {
+    const [frontSlideIndex, setFrontSlideIndex] = useState(frontSlideIndexQueryParams);
 
     const previousSlide = () => {
         setFrontSlideIndex((current) => current < slides.length - 1 ? current + 1 : current)

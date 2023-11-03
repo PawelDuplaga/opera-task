@@ -5,5 +5,8 @@
 .slideContainer {
     height: 500px;
     width: 500px;
+    -webkit-box-shadow: 1px 14px 48px -5px rgb(0, 0, 0);
+    -moz-box-shadow: 1px 14px 48px -5px rgb(0, 0, 0);
+    box-shadow: 1px 14px 48px -5px rgb(16, 17, 19);
 }
 

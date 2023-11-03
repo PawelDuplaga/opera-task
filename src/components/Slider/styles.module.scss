@@ -5,19 +5,23 @@
 .bigContainer {
     display: flex;
     flex-direction: column;
+    
 }
 
 .sliderContainer {
     position: relative;
     display: flex;
-    width: 700px;
-    height: 550px;
-    background-color: $gray-one;
+    width: 650px;
+    height: 650px;
     overflow: hidden;
 
     justify-content: center;
     align-items: center;
 
+    border-radius: 20px;
+    background: #1d253a;
+    box-shadow: inset 12px 12px 27px #1a2133,
+                inset -12px -12px 27px #202941;
 }
 
 .slideMotion {

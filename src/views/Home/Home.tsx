@@ -6,13 +6,8 @@ import { slidesFetch } from '@/api/slides-fetch';
 import SlideContextProvider from '@/context/slide-context';
 import { redirect } from 'next/navigation'
 
-type Props = {
-  params: {},
-  searchParams: { [key: string]: string | string[] | undefined },
-}
 
-
-const Home = async (props: Props) => {
+const Home = async () => {
 
   // const searchParams = props.searchParams;
   // if(!searchParams.index) redirect('?index=5')
@@ -23,15 +18,12 @@ const Home = async (props: Props) => {
   }
 
   return (
-		<div className={styles.homeContainer}>
-      <SlideContextProvider 
-        slides={slides}
-        frontSlideIndexSSR={3}
-      >
+    <SlideContextProvider slides={slides}>
+      <div className={styles.homeContainer}>
         <Slider/>
-        <AudioPlayer slides={slides}/>
-      </SlideContextProvider >
-		</div>
+        <AudioPlayer/>
+      </div>
+    </SlideContextProvider >
   );
 };
 

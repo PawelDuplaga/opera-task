@@ -47,9 +47,6 @@ const AudioPlayer = () => {
 
   return (
 		<div className={styles.audioplayerContainer}>
-      <audio ref={currentAudioRef} controls preload='auto'>
-        <source src="http://localhost:8080/audio/Yeat_Poppin.mp3" type="audio/mp3"/>
-      </audio>
 		</div>
   );
 };
