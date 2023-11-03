@@ -6,7 +6,10 @@ import { slidesFetch } from '@/api/slides-fetch';
 
 const Home = async () => {
 
-  const slides: TSlide[] | undefined = await slidesFetch();
+  const slides: TSlide[] | null = await slidesFetch();
+  if (slides === null) {
+    throw new Error("An error occurred while processing your request. Please try again later.")
+  }
 
   return (
 		<div className={styles.homeContainer}>
