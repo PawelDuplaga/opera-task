@@ -1,4 +1,4 @@
-export type Slide = {
+export type TSlide = {
     id: number;
     artist: string;
     title: string;

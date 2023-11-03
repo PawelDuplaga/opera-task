@@ -12,7 +12,7 @@ const AudioPlayer = () => {
   return (
 		<div className={styles.audioplayerContainer}>
       <audio ref={audioRef} controls>
-        <source src='http://localhost:8080/audio/Yeat_Poppin.mp3' type="audio/mp3"/>
+        <source src="http://localhost:8080/audio/Yeat_Poppin.mp3" type="audio/mp3"/>
       </audio>
 		</div>
   );

@@ -1,16 +1,16 @@
 import Slider from '@/components/Slider';
 import styles from './styles.module.scss';
 import AudioPlayer from '@/components/AudioPlayer';
-import { Slide } from '@/lib/types/Slide';
+import { TSlide } from '@/lib/types/Slide';
 import { slidesFetch } from '@/api/slides-fetch';
 
 const Home = async () => {
 
-  const slides: Slide[] | undefined = await slidesFetch();
+  const slides: TSlide[] | undefined = await slidesFetch();
 
   return (
 		<div className={styles.homeContainer}>
-      <Slider />
+      <Slider slides={slides}/>
       <AudioPlayer />
 		</div>
   );

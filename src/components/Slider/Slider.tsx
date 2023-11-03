@@ -5,16 +5,19 @@ import { motion } from 'framer-motion';
 import { slidesVariants } from '@/lib/const/sliderConst';
 import { getSlideClass } from '@/utils/sliderUtils';
 import styles from './styles.module.scss';
-import Slide from '../Slide';
+import Slide from '../SlideImage';
+import { TSlide } from '@/lib/types/Slide';
 
+type SliderProps = {
+  slides: TSlide[] | undefined
+}
 
-const Slider = () => {
+const Slider = ({ slides } : SliderProps) => {
 
-  const slides = [1,2,3,4,5,6,7,8,9,10];
   const [frontSlideIndex, setFrontSlideIndex] = useState(3);
 
   const mappedSlides = useMemo(() => {
-    return slides.map((data, slideIndex) => {
+    return slides?.map((slideData, slideIndex) => {
 
       return (
         <motion.div 
@@ -26,7 +29,7 @@ const Slider = () => {
           initial={getSlideClass(frontSlideIndex, slideIndex)}
           variants={slidesVariants}
           >
-          <Slide />
+          <Slide imageUrl={slideData.image_url} album={slideData.album}/>
         </motion.div>
       )})},[slides, frontSlideIndex])
 
