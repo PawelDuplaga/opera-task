@@ -2,10 +2,13 @@ import useSlides from '@/utils/hooks/useSlides';
 import styles from './styles.module.scss';
 import { FaBackward }  from 'react-icons/fa'
 
-const ButtonPrevious = () => {
-  const {previousSlide, isPrevious} = useSlides();
+type ButtonPreviousProps = {
+  callback : any;
+}
+
+const ButtonPrevious = ({ callback } : ButtonPreviousProps) => {
   return (
-		<button className={styles.buttonpreviousContainer} onClick={previousSlide}>
+		<button className={styles.buttonpreviousContainer} onClick={callback}>
       <FaBackward className={styles.previousIcon}/>
 		</button>
   );

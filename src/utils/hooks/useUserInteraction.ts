@@ -5,6 +5,7 @@ function useUserInteraction() {
 
   useEffect(() => {
     const handleUserInteraction = () => {
+      console.log("CLICK")
       setUserInteracted(true);
     };
 
@@ -15,7 +16,10 @@ function useUserInteraction() {
     };
   }, []);
 
-  return userInteracted;
+  return {
+    userInteracted,
+    setUserInteracted
+  };
 }
 
 export default useUserInteraction;

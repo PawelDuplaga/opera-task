@@ -2,10 +2,14 @@ import useSlides from '@/utils/hooks/useSlides';
 import styles from './styles.module.scss';
 import { FaForward } from 'react-icons/fa';
 
-const ButtonNext = () => {
-  const { nextSlide, isNext } = useSlides();
+type ButtonNextProps = {
+  callback : any;
+}
+
+
+const ButtonNext = ({ callback } : ButtonNextProps) => {
   return (
-		<button className={styles.buttonnextContainer} onClick={nextSlide}>
+		<button className={styles.buttonnextContainer} onClick={callback}>
       <FaForward className={styles.forwardIcon}/>
 		</button>
   );
