@@ -12,6 +12,7 @@ const useAudioPlayer = () => {
         isPrevious } = useSlides();
     const [audioArray, setAudioArray] = useState<HTMLAudioElement[] | undefined>();
     const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+    const [volume, setVolume] = useState(0.5);
 
     const setAudioIsPaused = () => {
         setIsAudioPlaying(false)
@@ -41,6 +42,12 @@ const useAudioPlayer = () => {
         }
     },[isAudioPlaying])
 
+    useEffect(() => {
+        if(audioArray){
+            audioArray[frontSlideIndex].volume = volume;
+        }
+    }, [audioArray, volume, frontSlideIndex])
+
     const nextAudio = useCallback(() => {
         if (audioArray && isNext){
             nextSlide()
@@ -67,7 +74,9 @@ const useAudioPlayer = () => {
         isAudioPlaying,
         setIsAudioPlaying,
         nextAudio,
-        previousAudio
+        previousAudio,
+        volume,
+        setVolume
     }
 }
 
