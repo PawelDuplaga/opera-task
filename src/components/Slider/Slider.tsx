@@ -15,7 +15,7 @@ const Slider = () => {
         <motion.div 
           key={slideIndex} 
           className={styles.slideMotion} 
-          transition={{ type: "spring", typstiffness: "100", bounce: 0.1 }}
+          transition={{ type: "spring", stiffness: "120", damping: "20" }}
           animate={getSlideClass(frontSlideIndex, slideIndex)}
           initial={getSlideClass(frontSlideIndex, slideIndex)}
           variants={slidesVariants}

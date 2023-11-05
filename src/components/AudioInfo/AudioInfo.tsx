@@ -15,7 +15,7 @@ const AudioInfo = () => {
       <div key={slideIndex} className={styles.infoContainer}>
         <motion.p
           className={styles.artistMotion}
-          transition={{ type: "spring", typstiffness: "100", bounce: 0, delay: 0 }}
+          transition={{ type: "spring", stiffness: "120", damping: "20", delay: 0 }}
           animate={getSlideClass(frontSlideIndex, slideIndex)}
           initial={getSlideClass(frontSlideIndex, slideIndex)}
           variants={artistVariants}
@@ -24,7 +24,7 @@ const AudioInfo = () => {
         </motion.p>
         <motion.h2
           className={styles.titleMotion}
-          transition={{ type: "spring", typstiffness: "100", bounce: 0, delay: 0.03 }}
+          transition={{ type: "spring", stiffness: "120", damping: "20", delay: 0.03 }}
           animate={getSlideClass(frontSlideIndex, slideIndex)}
           initial={getSlideClass(frontSlideIndex, slideIndex)}
           variants={titleVariants}
@@ -33,7 +33,7 @@ const AudioInfo = () => {
         </motion.h2>
         <motion.p
           className={styles.albumMotion}
-          transition={{ type: "spring", typstiffness: "100", bounce: 0, delay: 0.06 }}
+          transition={{ type: "spring", stiffness: "120", damping: "15", delay: 0.06 }}
           animate={getSlideClass(frontSlideIndex, slideIndex)}
           initial={getSlideClass(frontSlideIndex, slideIndex)}
           variants={albumVariants}
