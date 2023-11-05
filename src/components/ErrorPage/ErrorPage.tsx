@@ -5,6 +5,7 @@ type ErrorPageProps = {
 }
 
 const ErrorPage = ({ reset } : ErrorPageProps) => {
+
   return (
 		<div className={styles.errorpageContainer}>
       <h2>Oops... Something went wrong!</h2>
@@ -15,7 +16,7 @@ const ErrorPage = ({ reset } : ErrorPageProps) => {
         }
         className={styles.buttonRefresh}
       >
-        Try Again
+        Try refreshing the page
       </button>
 		</div>
   );

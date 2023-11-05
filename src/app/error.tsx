@@ -16,6 +16,6 @@ export default function Error({
   }, [error])
  
   return (
-    <ErrorPage />
+    <ErrorPage reset={reset}/>
   )
 }
