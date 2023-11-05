@@ -1,6 +1,7 @@
 'use client' // Error components must be Client Components
  
 import { useEffect } from 'react'
+import ErrorPage from '../ErrorPage'
  
 export default function Error({
   error,
@@ -15,6 +16,6 @@ export default function Error({
   }, [error])
  
   return (
-    <div> ERROR </div>
+    <ErrorPage />
   )
 }

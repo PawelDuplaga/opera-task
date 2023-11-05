@@ -1,6 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: 'standalone',
+  async rewrites() {
+    return [
+      {
+        source: '/api/slides',
+        destination: `http://localhost:8080/slides`,
+      },
+    ]
+  },
     images: {
         remotePatterns: [
           {
