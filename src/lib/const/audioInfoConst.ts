@@ -5,9 +5,9 @@ export const artistVariants = {
 }
 
 export const titleVariants = {
-    left: { opacity: 0, scale: 0.3, x: 0, zIndex: 2, y: 20 },
-    front : {opacity: 1, scale: 1, x: 0, zIndex: 3, y: 10 },
-    right : {opacity: 0, scale: 1, x: 700, zIndex: 4, y: 10 }
+    left: { opacity: 0, scale: 0.3, x: 0, zIndex: 2, y: 18 },
+    front : {opacity: 1, scale: 1, x: 0, zIndex: 3, y: 18 },
+    right : {opacity: 0, scale: 1, x: 700, zIndex: 4, y: 18 }
 }
 
 export const albumVariants = {

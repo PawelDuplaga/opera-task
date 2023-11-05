@@ -6,6 +6,7 @@ import { slidesFetch } from '@/api/slides-fetch';
 import SlideContextProvider from '@/context/slide-context';
 import { redirect } from 'next/navigation'
 import AudioInfo from '@/components/AudioInfo';
+import SongSnippetSlider from '@/components/SongSnippetSlider';
 
 
 const Home = async () => {
@@ -21,9 +22,7 @@ const Home = async () => {
   return (
     <SlideContextProvider slides={slides}>
       <div className={styles.homeContainer}>
-        <Slider/>
-        <AudioInfo />
-        <AudioPlayer/>
+        <SongSnippetSlider />
       </div>
     </SlideContextProvider >
   );

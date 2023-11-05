@@ -6,8 +6,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90px;
-    width: 90px;
+    height: 70px;
+    width: 70px;
     background: rgba(29, 37, 58, 0.41);
     border-radius: 124px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -15,11 +15,49 @@
     -webkit-backdrop-filter: blur(4.8px);
     border: 1px solid rgba(29, 37, 58, 0.41);
     cursor: pointer;
-}
 
-.forwardIcon {
-    width: 30px;
-    height: 30px;
-    transform: translateX(2px);
-    color: rgba(255, 255, 255, 0.8);
+    @include respond(xs){
+        height: 60px;
+        width: 60px;
+    }
+
+
+    .forwardIcon {
+        width: 25px;
+        height: 25px;
+        transform: translateX(2px);
+        color: rgba(255, 255, 255, 0.8);
+        transition: all 0.3s ease;
+
+        @include respond(xs){
+            height: 22px;
+            width: 22px;
+        }
+    }
+
+    &:hover {
+        .forwardIcon {
+            width: 28px;
+            height: 28px;
+            color: rgba(255, 255, 255, 0.925);
+
+            @include respond(xs){
+                height: 25px;
+                width: 25px;
+            }
+        }
+    }
+
+    &:active {
+        .forwardIcon {
+            width: 22px;
+            height: 22px;
+            color: rgba(255, 255, 255, 0.925);
+
+            @include respond(xs){
+                height: 20px;
+                width: 20px;
+            }
+        }
+    }
 }

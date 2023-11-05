@@ -6,8 +6,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 120px;
-    height: 120px;
+    width: 96px;
+    height: 96px;
     background: rgba(29, 37, 58, 0.41);
     border-radius: 20px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -16,32 +16,49 @@
     cursor: pointer;
     overflow: visible;
 
-    &:hover {
-        .playIcon {
-            width: 70px;
-            height: 70px;
-        }
+    @include respond(xs){
+        width: 82px;
+        height: 82px;
+    }
 
-        .pauseIcon {
-            width: 70px;
-            height: 70px;
+
+    .playStopIcon {
+        width: 50px;
+        height: 50px;
+        color: rgba(255, 255, 255, 0.8);
+        transition: all 0.3s ease;
+
+        @include respond(xs){
+            width: 42px;
+            height: 42px;
+        }
+    
+    }
+    
+    &:hover {
+        .playStopIcon {
+            width: 55px;
+            height: 55px;
+            color: rgba(255, 255, 255, 0.925);
+
+            @include respond(xs){
+                width: 45px;
+                height: 45px;
+            }
         }
     }
-        
-}
 
+    &:active {
+        .playStopIcon {
+            width: 45px;
+            height: 45px;
+            color: rgba(255, 255, 255, 0.925);
 
-.playIcon {
-    width: 60px;
-    height: 60px;
-    transform: translateX(4px);
-    color: rgba(255, 255, 255, 0.8);
-    transition: all 0.3s ease;
-}
+            @include respond(xs){
+                width: 39px;
+                height: 39px;
+            }
+        }
 
-.pauseIcon {
-    width: 60px;
-    height: 60px;
-    color: rgba(255, 255, 255, 0.8);
-    transition: all 0.3s ease;
+    }        
 }

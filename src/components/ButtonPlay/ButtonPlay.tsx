@@ -10,11 +10,15 @@ type ButtonPlayProps = {
 
 const ButtonPlay = ({ callback, isAudioPlaying } : ButtonPlayProps) => {
   return (
-		<button className={styles.buttonplayContainer} onClick={() => callback(!isAudioPlaying)}>
+		<button 
+      className={styles.buttonplayContainer} 
+      onClick={() => callback(!isAudioPlaying)}
+      test-id="play-stop-button"
+      >
       { !isAudioPlaying ? 
-        <FaPlay className={styles.playIcon}/>
+        <FaPlay className={styles.playStopIcon}/>
           :
-        <FaPause className={styles.pauseIcon}/>
+        <FaPause className={styles.playStopIcon}/>
       }
 		</button>
   );

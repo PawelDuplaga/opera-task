@@ -4,8 +4,21 @@
 
 .audioplayerContainer {
     display: flex;
-    width: 400px;
-    height: 160px;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
+    width: 340px;
+
+    @include respond(xs) {
+        width: min(100%, 280px);
+    }
+}
+
+.buttonsContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
 }

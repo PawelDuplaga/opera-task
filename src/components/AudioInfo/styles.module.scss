@@ -6,8 +6,9 @@
     position: relative;
     overflow: hidden;
     color: antiquewhite;
-    width: 600px;
-    height: 100px;
+    padding: 0.5rem;
+    width: 100%;
+    height: 90px;
 }
 
 .infoContainer {
@@ -17,13 +18,22 @@
 
 .artistMotion {
     position: absolute;
+    @include respond(xs){
+        font-size: 0.75rem;
+    }
 }
 
 .titleMotion {
     position: absolute;
     font-size: 2rem;
+    @include respond(xs){
+        font-size: 1.25rem;
+    }
 }
 
 .albumMotion {
     position: absolute;
+    @include respond(xs){
+        font-size: 0.75rem;
+    }
 }
