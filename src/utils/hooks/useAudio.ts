@@ -18,6 +18,8 @@ const useAudioPlayer = () => {
         setIsAudioPlaying(false)
     }
 
+    //mapping Audio elements to preload audio
+    //adding event listener soo app knows if current audio stopped playing
     useEffect(() => {
         const audioElements = slides.map((slideData) => new Audio(slideData.audio_url));
         audioElements.forEach(audioElement => {
@@ -35,6 +37,7 @@ const useAudioPlayer = () => {
         }
     }, [slides]);
 
+    //toggle stop / play
     useEffect(() => {
         if(audioArray){
             isAudioPlaying ? 
@@ -42,12 +45,14 @@ const useAudioPlayer = () => {
         }
     },[isAudioPlaying])
 
+    //manage volume change
     useEffect(() => {
         if(audioArray){
             audioArray[frontSlideIndex].volume = volume;
         }
     }, [audioArray, volume, frontSlideIndex])
 
+    //switch to next Audio
     const nextAudio = useCallback(() => {
         if (audioArray && isNext){
             nextSlide()
@@ -58,6 +63,7 @@ const useAudioPlayer = () => {
         }   
     },[audioArray, isNext, nextSlide, frontSlideIndex])
 
+    //switch to previous Audio
     const previousAudio = useCallback(() => {
         if (audioArray && isPrevious){
             previousSlide()

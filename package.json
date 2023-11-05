@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "build-start": "next build && next start"
+    "build-start": "next build && next start",
+    "i-build-start" : "npm install && next build && next start"
   },
   "dependencies": {
     "@mantine/core": "^7.1.7",
