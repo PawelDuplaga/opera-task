@@ -1,22 +1,17 @@
-import Slider from '@/components/Slider';
 import styles from './styles.module.scss';
-import AudioPlayer from '@/components/AudioPlayer';
 import { TSlide } from '@/lib/types/Slide';
-import { slidesFetch } from '@/api/slides-fetch';
 import SlideContextProvider from '@/context/slide-context';
-import { redirect } from 'next/navigation'
-import AudioInfo from '@/components/AudioInfo';
 import SongSnippetSlider from '@/components/SongSnippetSlider';
-
+import axiosClient from "@/utils/axiosClient";
 
 const Home = async () => {
 
-  // const searchParams = props.searchParams;
-  // if(!searchParams.index) redirect('?index=5')
-
-  const slides: TSlide[] | null = await slidesFetch();
-  if (slides === null) {
-    throw new Error("An error occurred while processing your request. Please try again later.")
+  let slides : TSlide [];
+  try {
+    const backendResponse = await axiosClient.get('/slides');
+    slides = backendResponse.data;
+  } catch (error) {
+    throw new Error("Something went wrong!")
   }
 
   return (
