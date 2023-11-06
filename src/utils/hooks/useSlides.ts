@@ -5,7 +5,7 @@ const useSlides = () => {
     const context = useContext(SlideContext);
     if (context === null){
         throw new Error(
-            "useTheme must be used within a SlideContextProvider"
+            "useSlides must be used within a SlideContextProvider"
         );
     }
 
