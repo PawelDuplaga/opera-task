@@ -1,5 +1,5 @@
 export type TSlide = {
-    id: number;
+    id: string;
     artist: string;
     title: string;
     album: string;
