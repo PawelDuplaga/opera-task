@@ -1,20 +1,19 @@
+'use client'
+
 import styles from './styles.module.scss';
 import { TSlide } from '@/lib/types/Slide';
 import { AudioSnippetData } from '@/lib/const/audioSnippetData';
 import SlideContextProvider from '@/context/slide-context';
 import SongSnippetSlider from '@/components/SongSnippetSlider';
-import axiosClient from "@/utils/axiosClient";
+import { useEffect, useState } from 'react';
+import ErrorPage from '@/components/ErrorPage';
+import Spin from '@/components/Spin';
+import axios from 'axios';
 
-const getSlides = async () => {
-  
-  try {
-    const backendResponse = await axiosClient.get('/slides');
-    const slides: TSlide[] = backendResponse.data;
-    return slides
-  } catch (error) {
-    throw new Error("Something went wrong!")
-  }
-}
+const Home = () => {
+
+  const [slides, setSlides] = useState<TSlide[]>();
+  const [error, setError] = useState(null);
 
 const getSlidesLocal = (): TSlide[] => {
   return AudioSnippetData.map((elem, index): TSlide => ({
@@ -31,13 +30,32 @@ const Home = async () => {
 
   // const slides = await getSlides();
   const slides = getSlidesLocal();
+  useEffect(() => {
+    axios
+      .get('/api/slides') // proxy in next.js.config
+      .then(response => {
+        setSlides(response.data);
+      })
+      .catch(error => {
+        setError(error);
+      });
+  },[])
+
 
   return (
-    <SlideContextProvider slides={slides}>
-      <div className={styles.homeContainer}>
-        <SongSnippetSlider />
+    <div className={styles.homeContainer}>
+    {error ? (
+      <ErrorPage />
+    ) : slides ? (
+      <SlideContextProvider slides={slides}>
+          <SongSnippetSlider />
+      </SlideContextProvider >
+    ) : (
+      <div className={styles.loading}>
+        <Spin />
       </div>
-    </SlideContextProvider >
+    )}
+  </div>
   );
 };
 

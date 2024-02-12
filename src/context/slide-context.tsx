@@ -22,6 +22,7 @@ type SlideContextType = {
 export const SlideContext = createContext<SlideContextType | null>(null)
 
 const SlideContextProvider = ({ frontSlideIndexQueryParams = 0, slides, children } : SlideContextProviderProps) => {
+    
     const [frontSlideIndex, setFrontSlideIndex] = useState(frontSlideIndexQueryParams);
 
     const isPrevious = frontSlideIndex > 0
